@@ -26,7 +26,7 @@ public class FrogSimulation
 	public double runSimulations(int num)
 	{ 
 		int passed = 0;
-		for (inti=0;i<num;i++){
+		for (int i=0;i<num;i++){
 		if(this.simulate()==true){
 		passed++;
 		}	
