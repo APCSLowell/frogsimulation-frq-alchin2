@@ -1,39 +1,39 @@
-public class FrogSimulation
-{
-	private int goalDistance;
-	private int maxHops;
-	
-	public FrogSimulation(int dist, int numHops)
-	{
-		goalDistance = dist;
-		maxHops = numHops;
-		maxHopsHolder = numHops;  //ignore this, it's used for testing
-	}
-	
-	//private int hopDistance() 
-	//implementation is below, but not important
-	
-	public boolean simulate()
-	{ 
-		int total = 0;
-		for(int i =0; i<maxHops;i++){
-		total+=this.hopDistance();	
-		}
-		return (total>goalDistance);
+public class FrogSimulation {
+   private int goalDistance;
+   private int maxHops;
 
-	}
-	
-	public double runSimulations(int num)
-	{ 
-		int passed = 0;
-		for (int i=0;i<num;i++){
-		if(this.simulate()==true){
-		passed++;
-		}	
-		}
-		return (double)passed/num;
+   public FrogSimulation(int dist, int numHops) {
+       goalDistance = dist;
+       maxHops = numHops;
+       maxHopsHolder = numHops; // ignore this, it's used for testing
+   }
 
-	}
+   // private int hopDistance()
+   // implementation is below, but not important
+
+   public boolean simulate() {
+       int position = 0;
+       for (int count = 0; count < maxHops; count++) {
+           position += hopDistance();
+           if (position >= goalDistance) {
+               return true;
+           } else if (position < 0) {
+               return false;
+           }
+       }
+       return false;
+   }
+
+   public double runSimulations(int num) {
+       int countSuccess = 0;
+       for (int count = 0; count < num; count++) {
+           if (simulate()) {
+               countSuccess++;
+           }
+       }
+       return (double) countSuccess / num;
+   }
+
 	
 	
 	//ignore the code below this line
